@@ -28,42 +28,6 @@ ex getting list of posts[query],create a brand new post[mutation];
 
 there are two hooks useQuery, useMutation which used to get data and change data 
 
-//example of query 
+it does invalidate with very nice way
 
-import {useQuery,useMutation} from '@tanstack/react-query'
-
-const POSTS =[
-  {
-    id:1,
-    title:'post 1'
-  },
-  {
-    id:2,
-    title:'post 2'
-  }
-];
-
-const App = ()=>{
-  const postQuery = useQuery({
-    queryKey:["posts"],
-    queryFn: ()=> wait(1000).then(()=> [...POSTS])
-  })
-
-if(postQuery.isLoading) return <h1>...Loading</h1>
-if(postQuery.isError) return <pre>{JSON.stringify(postQuery.error)}</pre>
-
-  return(
-    <>
-    {postQuery.data.map((data)=>{
-      return <p>{data.title}</p>
-    })}
-    </>
-  )
-}
-
-function wait(duration:number){
-return new Promise(resolve => setTimeout(resolve, duration));
-}
-
-export default App;
-
+i can use the userClient query to invalitdate the data when i mutate it
