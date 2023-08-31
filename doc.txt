@@ -31,3 +31,35 @@ there are two hooks useQuery, useMutation which used to get data and change data
 it does invalidate with very nice way
 
 i can use the userClient query to invalitdate the data when i mutate it
+
+useQuery in details =>
+
+qeryKey must be unique and it can be semantic in sense of what data we're getting 
+
+for ex =>
+
+
+/posts -> ["posts];
+/posts/1 -> ["posts",post.id];
+/post/2/comments -> ["post",post.id,comments];
+/posts/2/authorId-1 -> ["posts",{authorId:1}];
+
+
+queryFn must always return a promise 
+
+use axios insted of fetch, fetch generally does not throw erros by default
+
+enabled is used to call a query to wait or conditionally before any previous query is processing
+
+
+for ex=> 
+
+if we have a cart page so 
+
+until we get the card data
+
+/card 
+
+/card/item1 i can add enable to the /card/item so it can be called when the
+
+enabled : cardQuery.data.cart !== undefined 
